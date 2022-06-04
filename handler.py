@@ -2,7 +2,7 @@ import logging
 from multiprocessing import shared_memory
 from time import time
 
-from pynput.keyboard import HotKey, Key, KeyCode, Listener
+from pynput.keyboard import HotKey, KeyCode, Listener
 
 from provider import translate
 
@@ -57,7 +57,7 @@ class HotKeyHandler:
         """
         logging.debug("Starting listener for handling keyboard events")
         hotkey = HotKey(
-            keys=[Key.cmd_l, KeyCode(char="c")],
+            keys=HotKey.parse("<cmd>+c"),
             on_activate=self.event_parser,
         )
         with Listener(
